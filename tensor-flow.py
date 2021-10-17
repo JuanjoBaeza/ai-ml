@@ -2,11 +2,11 @@ import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Formula:                Grados_Farenhait = Grados_Celsius x 1.8 + 32
-# Formula función lineal: Y = m·x + b
+# Formula:        Grados_Farenhait = Grados_Celsius x 1.8 + 32
+# Función lineal: Y = m·x + b
 
 celsius   = np.array([-40, -10, 0, 8, 15, 22, 38], dtype=float)
-farenhait = np.array([-40, 14, 32, 46, 59, 72, 100], dtype=float)
+farenheit = np.array([-40, 14, 32, 46, 59, 72, 100], dtype=float)
 
 capa   = tf.keras.layers.Dense(units=1, input_shape=[1])
 modelo = tf.keras.Sequential([capa])
@@ -16,7 +16,7 @@ modelo.compile(
     loss = 'mean_squared_error'
 )
 print("Comenzando entrenamiento modelo...")
-historial = modelo.fit(celsius, farenhait, epochs=1000, verbose=False)
+historial = modelo.fit(celsius, farenheit, epochs=1000, verbose=False)
 print("Modelo entrenado")
 
 plt.xlabel("Entrenamientos")

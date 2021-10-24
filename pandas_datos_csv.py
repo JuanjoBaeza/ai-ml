@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv('dirtydata.csv')
+df = pd.read_csv('datasets/dirtydata.csv')
 
 df.dropna(inplace = True)                  # Remueve filas nulas
 df.dropna(subset=['Date'], inplace = True) # Corrige formato de fecha

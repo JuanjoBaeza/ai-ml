@@ -29,8 +29,9 @@ regresion_lineal.fit(x.reshape(-1,1), y)
 # vemos los parámetros que ha estimado la regresión lineal
 print('Valor w = ' + str(regresion_lineal.coef_) + ', Valor b = ' + str(regresion_lineal.intercept_))
 
-w = regresion_lineal.coef_
-b = regresion_lineal.intercept_
+
+w = regresion_lineal.coef_      # w = pendiente
+b = regresion_lineal.intercept_ # b = interseccion
 
 # dibujamos la linea diagonal de nuestra regresión lineal
 plt.plot(x, w*x + b)

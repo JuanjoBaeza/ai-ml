@@ -1,8 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# arrange (nº elementos) seguido de reshape crea matrices de N filas x M columnas  
-x = np.arange(8).reshape(-1, 1) # 40 elementos en una matriz de 4 filas x 10 col
+# reshape(-1, 1) formatea la matriz a n filas (arange) y 1 columna
+x = np.arange(8).reshape(-1, 1) 
 print(x)
 
 # arrange (nº elementos) seguido de reshape crea matrices de N filas x M columnas  

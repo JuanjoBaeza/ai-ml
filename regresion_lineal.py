@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression 
+from sklearn.metrics import mean_squared_error
 
 # función f(x) = 0.1*x + 1.25 + 0.2*Ruido_Gaussiano [ y = w·x + b ]
 def f(x):  
@@ -28,7 +29,35 @@ regresion_lineal.fit(x.reshape(-1,1), y)
 # vemos los parámetros que ha estimado la regresión lineal
 print('Valor w = ' + str(regresion_lineal.coef_) + ', Valor b = ' + str(regresion_lineal.intercept_))
 
-# vamos a predicir y = regresion_lineal(5)
+w = regresion_lineal.coef_
+b = regresion_lineal.intercept_
+
+# dibujamos la linea diagonal de nuestra regresión lineal
+plt.plot(x, w*x + b)
+
+# vamos a predecir y = para un valor n de x, regresion_lineal(5)
 nuevo_x = np.array([5]) 
 prediccion = regresion_lineal.predict(nuevo_x.reshape(-1,1))
+
 print('Valor de y =' + str(prediccion) + ' para un valor de x=5')
+
+# Predecimos los valores y para los datos usados en el entrenamiento
+prediccion_entrenamiento = regresion_lineal.predict(x.reshape(-1,1))
+
+# Calculamos el Error Cuadrático Medio (MSE = Mean Squared Error)
+mse = mean_squared_error(y_true = y, y_pred = prediccion_entrenamiento)
+
+# La raíz cuadrada del MSE es el RMSE
+rmse = np.sqrt(mse)
+
+print('Error Cuadrático Medio (MSE) = ' + str(mse))
+print('Raíz del Error Cuadrático Medio (RMSE) = ' + str(rmse))
+
+# El coeficiente de determinación R2 determina la calidad del modelo 
+# para replicar los resultados, y la proporción de variación de los 
+# resultados que puede explicarse por el modelo
+
+# Calculamos el coeficiente de determinación R2
+r2 = regresion_lineal.score(x.reshape(-1,1), y)
+
+print('Coeficiente de Determinación R2 = ' + str(r2))

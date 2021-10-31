@@ -15,7 +15,7 @@ x = np.arange(0, 20, 0.5)
 # calculamos y a partir de la función que hemos generado
 y = f(x)
 
-plt.scatter(x,y,label='data', color='blue')
+plt.scatter(x, y, label='data', color='blue')
 plt.title('Datos')
 
 #### Hasta aqui el dibujo de la Regresión Lineal ####
@@ -27,7 +27,7 @@ regresion_lineal = LinearRegression()
 regresion_lineal.fit(x.reshape(-1,1), y) 
 
 # vemos los parámetros que ha estimado la regresión lineal
-print('Valor w = ' + str(regresion_lineal.coef_) + ', Valor b = ' + str(regresion_lineal.intercept_))
+print('Valor w (pendiente) = ' + str(regresion_lineal.coef_) + ', Valor b (intersección) = ' + str(regresion_lineal.intercept_))
 
 
 w = regresion_lineal.coef_      # w = pendiente
@@ -61,4 +61,4 @@ print('Raíz del Error Cuadrático Medio (RMSE) = ' + str(rmse))
 # Calculamos el coeficiente de determinación R2
 r2 = regresion_lineal.score(x.reshape(-1,1), y)
 
-print('Coeficiente de Determinación R2 = ' + str(r2))
+print('Coeficiente de Determinación R2 (score) = ' + str(r2))

@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression 
 from sklearn.metrics import mean_squared_error
 
-# función f(x) = 0.1*x + 1.25 + 0.2*Ruido_Gaussiano [ y = w·x + b ]
+# función f(x) = 0.1·x + 1.25 + 0.2(Ruido_Gaussiano) [ y = w·x + b ]
 def f(x):  
     np.random.seed(42)
     y = 0.1*x + 1.25 + 0.2*np.random.randn(x.shape[0])
@@ -37,7 +37,8 @@ b = regresion_lineal.intercept_ # b = interseccion
 plt.plot(x, w*x + b)
 
 # vamos a predecir y = para un valor n de x, regresion_lineal(5)
-nuevo_x = np.array([5]) 
+# reshape(-1,1) esto convierte la matriz en un array vertical con 1 columna
+nuevo_x = np.array(5) 
 prediccion = regresion_lineal.predict(nuevo_x.reshape(-1,1))
 
 print('Valor de y =' + str(prediccion) + ' para un valor de x=5')

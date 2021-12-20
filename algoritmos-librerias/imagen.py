@@ -1,7 +1,7 @@
 import cv2  
   
 # using imread('path') and 0 denotes read as  grayscale image  
-img = cv2.imread(r'images/cat.jpg',1)  
+img = cv2.imread(r'../images/cat.jpg',1)  
   
 #This is using for display the image  
 cv2.imshow('image',img)  

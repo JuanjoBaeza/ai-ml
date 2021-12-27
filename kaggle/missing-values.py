@@ -13,10 +13,10 @@ X_test_full = pd.read_csv('/mnt/c/Repo/ai-ml/kaggle/datasets/test.csv', index_co
 
 # Remove rows with missing target, separate target from predictors
 X_full.dropna(axis=0, subset=['SalePrice'], inplace=True)
-y = X_full.SalePrice
+y = X_full.SalePrice # La variable dependiente 'y' es la columna SalePrice, por ello se descarta
 X_full.drop(['SalePrice'], axis=1, inplace=True)
 
-# To keep things simple, we'll use only numerical predictors
+# To keep things simple, we'll use only numerical predictors, we exclude object type columns
 X = X_full.select_dtypes(exclude=['object'])
 X_test = X_test_full.select_dtypes(exclude=['object'])
 

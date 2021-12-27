@@ -4,7 +4,7 @@ import matplotlib.pyplot as pl
 df = pd.read_csv('datasets/data.csv')
 
 x = df.corr()
-print (x)
+print(x)
 
 df.plot()
 pl.show()

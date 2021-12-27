@@ -73,3 +73,4 @@ plt.xlabel('Experimental LogS')
 
 # Como interpretar los valores de R2 y MSE
 # https://statisticsbyjim.com/regression/interpret-r-squared-regression/
+# https://statisticsbyjim.com/regression/standard-error-regression-vs-r-squared/

@@ -65,8 +65,10 @@ print(pd.concat([lr_results, rf_results]))
 
 plt.figure(figsize=(5,5))
 plt.scatter(x=y_train, y=y_lr_train_pred, c="#7CAE00", alpha=0.3)
+
 z = np.polyfit(y_train, y_lr_train_pred, 1)
 p = np.poly1d(z)
+
 plt.plot(y_train,p(y_train),"#F8766D")
 plt.ylabel('Predicted LogS')
 plt.xlabel('Experimental LogS')

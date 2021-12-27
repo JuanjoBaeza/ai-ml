@@ -36,7 +36,7 @@ lr_results = pd.DataFrame(['Linear regression',lr_train_mse, lr_train_r2, lr_tes
 lr_results.columns = ['Method','Training MSE','Training R2','Test MSE','Test R2']
 
 #7.- Print the MSE value
-print(lr_train_mse) #Print one value
+print(lr_train_mse) #Print mse value
 print(lr_results)   #Other way to print all values
 
 ## Ahora vamos a aplicar otro algoritmo, Random Forest.
@@ -57,7 +57,7 @@ rf_results = pd.DataFrame(['Random forest',rf_train_mse, rf_train_r2, rf_test_ms
 rf_results.columns = ['Method','Training MSE','Training R2','Test MSE','Test R2']
 
 print(rf_train_mse)
-print(rf_results) #Print one value
+print(rf_results) #Print mse value
 
 print(pd.concat([lr_results, rf_results]))
 

@@ -70,3 +70,6 @@ p = np.poly1d(z)
 plt.plot(y_train,p(y_train),"#F8766D")
 plt.ylabel('Predicted LogS')
 plt.xlabel('Experimental LogS')
+
+# Como interpretar los valores de R2 y MSE
+# https://statisticsbyjim.com/regression/interpret-r-squared-regression/

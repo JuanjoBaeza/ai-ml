@@ -1,3 +1,5 @@
+# https://medium.com/coders-mojo/day-43-60-days-of-data-science-and-machine-learning-series-299818452cea
+
 # Simple Linear Regression
 # It’s a technique to estimate the relationship between two quantitative variables. It is used when you want to establish:
 # Strength of the relationship — How strong the relationship is between two variables
@@ -37,7 +39,7 @@ x = dn.iloc[:,:6]
 y = dn.iloc[:,-1]
 x_arr = x.values
 y_arr = y.values
-x_train,x_test,y_train,y_test = train_test_split(x_arr,y_arr,test_size =0.05,random_state=0)
+x_train,x_test,y_train,y_test = train_test_split(x_arr,y_arr,test_size=0.05,random_state=0)
 
 def gm():
     model = Sequential([
@@ -56,7 +58,7 @@ def gm():
 gm().summary()
 
 es = EarlyStopping(monitor = 'val_loss', patience =5)
-model =gm()
+model = gm()
 pu = model.predict(x_test)
 h = model.fit(
     x_train, y_train,

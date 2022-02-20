@@ -5,7 +5,7 @@ from sklearn.tree import DecisionTreeClassifier
 import matplotlib.pyplot as plt
 import matplotlib.image as pltimg
 
-df = pandas.read_csv("datasets/shows.csv")
+df = pandas.read_csv("../datasets/shows.csv")
 
 d = {'UK': 0, 'USA': 1, 'N': 2}
 df['Nationality'] = df['Nationality'].map(d)
@@ -23,9 +23,9 @@ dtree = dtree.fit(X, y)
 data = tree.export_graphviz(dtree, out_file=None, feature_names=features)
 
 graph = pydotplus.graph_from_dot_data(data)
-graph.write_png('images/mydecisiontree.png')
+graph.write_png('../images/mydecisiontree.png')
 
-img=pltimg.imread('images/mydecisiontree.png')
+img=pltimg.imread('../images/mydecisiontree.png')
 imgplot = plt.imshow(img)
 
 plt.show()

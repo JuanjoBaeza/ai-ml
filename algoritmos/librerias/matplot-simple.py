@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 import matplotlib.pyplot as plt
 
 plt.plot([2 ,3 ,4 ,5 ])

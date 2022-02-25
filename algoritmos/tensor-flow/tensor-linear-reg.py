@@ -24,7 +24,7 @@ from tensorflow.keras.callbacks import EarlyStopping, LambdaCallback
 
 # tf.logging.set_verbosity(tf.logging.ERROR)
 
-df = pd.read_csv('data.csv',names=['id','year','a','b','c','d','e','price'])
+df = pd.read_csv('../../datasets/data-tensor-linear.csv',names=['id','year','a','b','c','d','e','price'])
 # check missing data
 df.isna().sum()
 
@@ -70,4 +70,4 @@ h = model.fit(
 # plot_loss(h)
 
 pt = model.predict(x_test)
-compare_predictions(pu,pt,y_test)
+#compare_predictions(pu,pt,y_test)

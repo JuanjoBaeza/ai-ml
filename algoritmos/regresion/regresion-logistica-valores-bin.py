@@ -12,7 +12,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 #Leer el archivo de Excel y vea sus primeras 5 filas.
-df = pd.read_excel("../datasets/logistic.xlsx") 
+df = pd.read_excel("../../datasets/reg-logistic.xlsx") 
 print (df.head())
 
 #Dividir el conjunto de datos en una variable independiente y dependiente.

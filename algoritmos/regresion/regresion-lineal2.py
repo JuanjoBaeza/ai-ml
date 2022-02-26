@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.linear_model import LinearRegression
 
-peliculas = pd.read_csv("datasets/movies2.csv")
+peliculas = pd.read_csv("../../datasets/reg-linear-movies.csv")
 datos_numericos = peliculas.select_dtypes(np.number)
 datos_numericos = peliculas.select_dtypes(np.number).fillna(0)
 

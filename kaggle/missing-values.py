@@ -8,8 +8,8 @@ from sklearn.impute import SimpleImputer
 # https://medium.com/@julie.yin/understanding-the-data-splitting-functions-in-scikit-learn-9ae4046fbd26
 
 # Read the data
-X_full = pd.read_csv('/mnt/c/Repo/ai-ml/kaggle/datasets/train.csv', index_col='Id')
-X_test_full = pd.read_csv('/mnt/c/Repo/ai-ml/kaggle/datasets/test.csv', index_col='Id')
+X_full = pd.read_csv('datasets/train.csv', index_col='Id')
+X_test_full = pd.read_csv('datasets/test.csv', index_col='Id')
 
 # Remove rows with missing target, separate target from predictors
 X_full.dropna(axis=0, subset=['SalePrice'], inplace=True)

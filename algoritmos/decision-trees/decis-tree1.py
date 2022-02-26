@@ -6,7 +6,7 @@ from sklearn.tree import DecisionTreeClassifier
 import matplotlib.pyplot as plt
 import matplotlib.image as pltimg
 
-df = pandas.read_csv("../datasets/shows.csv")
+df = pandas.read_csv("../../datasets/decis-tree-shows.csv")
 
 # Mapeo de valores a int
 d = {'UK': 0, 'USA': 1, 'N': 2}

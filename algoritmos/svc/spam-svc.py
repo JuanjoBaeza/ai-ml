@@ -2,7 +2,7 @@ import csv
 import pandas as pd
 import numpy as np
 
-spam_or_ham = pd.read_csv("../datasets/spam.csv", encoding='latin-1')[["v1", "v2"]]
+spam_or_ham = pd.read_csv("../../datasets/svc-spam.csv", encoding='latin-1')[["v1", "v2"]]
 spam_or_ham.columns = ["label", "text"]
 spam_or_ham.head()
 
@@ -32,6 +32,7 @@ demo_vectorizer = CountVectorizer(
 
 from sklearn.model_selection import train_test_split
 train_text, test_text, train_labels, test_labels = train_test_split(spam_or_ham["text"], spam_or_ham["label"], stratify=spam_or_ham["label"])
+
 print(f"Training examples: {len(train_text)}, testing examples {len(test_text)}")
 
 real_vectorizer = CountVectorizer(tokenizer = tokenize, binary=True)

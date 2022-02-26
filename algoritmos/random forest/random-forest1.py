@@ -5,7 +5,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 #reading the csv data using pandas to salary
-salary=pd.read_csv("../datasets/Position_Salaries.csv")
+salary=pd.read_csv("../../datasets/rand-forest-position-salaries.csv")
 
 #Using the scatterplot to find the relation between level and salary
 sns.scatterplot(data=salary,x='Level',y='Salary')

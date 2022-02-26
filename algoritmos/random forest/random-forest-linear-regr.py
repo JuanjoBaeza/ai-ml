@@ -7,7 +7,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error, r2_score
 
 #1.- Read the data source
-df = pd.read_csv('datasets/solubility.csv')
+df = pd.read_csv('../../datasets/rand-forest-solubility.csv')
 print(df.head())
 
 #2.- Data procesing, 4 first cols assigned to X last col assigned to y

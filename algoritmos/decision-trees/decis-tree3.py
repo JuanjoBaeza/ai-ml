@@ -6,7 +6,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-ice_cream=pd.read_csv("../datasets/IceCreamData.csv")
+ice_cream=pd.read_csv("../../datasets/decis-tree-IceCreamData.csv")
 ice_cream.head(10)
 
 # Using the displot to know the distribution of the Revenue column present in the dataset

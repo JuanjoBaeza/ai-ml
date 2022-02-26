@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 
 # El campo edad = edad del cliente, cantidad = cantidad de personas que iban con esa persona, la columna vehiculo = si llegó o no en un vehículo particular, la columna pago se refiere a su forma de pago (efectivo, tarjeta de credito, débito o vales), y por último la columna monto que indica cuánto compró.
-ventas = pd.read_csv("datasets/ventas2.csv")
+ventas = pd.read_csv("../../datasets/reg-lineal-ventas.csv")
 objetivo = "importe"
 independientes = ventas.drop(columns=['importe']).columns
 

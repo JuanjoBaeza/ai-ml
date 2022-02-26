@@ -5,7 +5,7 @@ from sklearn.tree import DecisionTreeClassifier
 import matplotlib.pyplot as plt
 import matplotlib.image as pltimg
 
-df = pandas.read_csv("../datasets/shows.csv")
+df = pandas.read_csv("../../datasets/decis-tree-shows.csv")
 
 d = {'UK': 0, 'USA': 1, 'N': 2}
 df['Nationality'] = df['Nationality'].map(d)

@@ -1,0 +1,11 @@
+city,age,salary,sex,purchase
+jaipur,23,50000,femlae,yes
+delhi,24,,female,no
+mumbai,23,45000,male,no 
+delhi,27,50000,female,no 
+jaipur,,60000,male,yes
+mumbai,30,,female,yes
+hyderadad,24,50000,male,yes
+jaipur,,20000,male,no 
+jaipur,23,30000,female,yes
+delhi,21,50000,male,yes

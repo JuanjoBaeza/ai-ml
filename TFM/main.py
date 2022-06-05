@@ -13,7 +13,7 @@ def main():
     for page in pdf_page:
         text_list.append(page.replace("\n", " "))
 
-    #print(text_list)                          # Creamos una lista con todas las páginas
+    #print(text_list)                          # Creamos una lista con todas las páginas del libro
 
     text_var = ' '  
     # Replace chars not wanted
@@ -23,17 +23,22 @@ def main():
     text_var = text_var.replace("—", "")
     text_var = text_var.replace(".", "")
     text_var = text_var.replace("!", "")
+    text_var = text_var.replace("¡", "")
     text_var = text_var.replace("?", "")
     text_var = text_var.replace("¿", "")
     text_var = text_var.replace(",", "")
     text_var = text_var.replace(":", "")
+    text_var = text_var.replace(";", "")
     text_var = text_var.replace("http//", "")
     text_var = text_var.replace("http://", "")
     text_var = text_var.replace("@", "")
     text_var = text_var.replace("c/", "")
     text_var = text_var.lower()
     
-    print(text_var)                           # Text ya es una var tipo string con el libro
+    text = text_var.split() 
+
+    #print(text)                           # El libro ya en una var tipo string
+    print(len(text))                       # Numero de palabras del documento
 
 if __name__ == "__main__":
     main()

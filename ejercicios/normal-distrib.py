@@ -9,16 +9,16 @@ seed(1)
 #generate sample of 200 values that follow a normal distribution 
 data = normal(loc=0, scale=1, size=1000)
 
-#view first six values
-print(data[0:5])
+#view first five values
+print("Primeros 5 valores: ", data[0:5])
 
 #find mean of sample
 m = np.mean(data)
-print(m)
+print("La media de la muestra: ", m)
 
 #find standard deviation of sample
 d = np.std(data, ddof=1)
-print(d)
+print("La desviación standard: ", d)
 
 #create a quick histogram to visualize the distribution of data values
 count, bins, ignored = plt.hist(data, 30)

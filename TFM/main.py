@@ -1,4 +1,6 @@
 import pdftotext
+from collections import Counter
+import nltk
 
 def main():
 
@@ -35,10 +37,22 @@ def main():
     text_var = text_var.replace("c/", "")
     text_var = text_var.lower()
     
-    text = text_var.split() 
+    text = text_var.split()               # Convertimos la variable tipo string text_var con todas las palabras del libro en una lista aplicando split
 
-    #print(text)                           # El libro ya en una var tipo string
-    print(len(text))                       # Numero de palabras del documento
+    print("Extracto de la lista(20): ")                          # El libro ya en una var tipo string
+    print(Most_Common(text))
+
+    print("\nTamaño del libro en palabras: ", len(text))
+    
+    frequency_distribution = nltk.FreqDist(text) 
+    print("La frecuencia de distribución es: " ,frequency_distribution)
+    
+    most_common_element = frequency_distribution.max()
+    print ("Palabra mas común: " ,most_common_element)
+
+def Most_Common(text):
+    data = Counter(text)
+    return data.most_common(20)
 
 if __name__ == "__main__":
     main()

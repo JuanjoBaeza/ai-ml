@@ -1,6 +1,5 @@
 import pdftotext
 from collections import Counter
-import pandas as pd
 import nltk
 #nltk.download('wordnet')
 #nltk.download('omw-1.4')
@@ -23,62 +22,65 @@ def main():
     for page in pdf_page:     # Iterate over all the pages
         text_list.append(page.replace("\n", " "))
 
-    #print(text_list)         # Creamos una lista con todas las páginas del libro
+    #print(text_list)         # Creamos una lista con todas las frases de las páginas del libro
 
-    text_var = ' '  
+    text_varlist = ' '  
     
     for x in text_list:       # Replace chars not wanted
-        text_var += ' ' + x
+        text_varlist += ' ' + x
     
-    text_var = text_var.replace("—", "")
-    text_var = text_var.replace(".", "")
-    text_var = text_var.replace("!", "")
-    text_var = text_var.replace("¡", "")
-    text_var = text_var.replace("?", "")
-    text_var = text_var.replace("¿", "")
-    text_var = text_var.replace(",", "")
-    text_var = text_var.replace(":", "")
-    text_var = text_var.replace(";", "")
-    text_var = text_var.replace("(", "")
-    text_var = text_var.replace(")", "")
-    text_var = text_var.replace("[", "")
-    text_var = text_var.replace("]", "")
-    text_var = text_var.replace("http//", "")
-    text_var = text_var.replace("http://", "")
-    text_var = text_var.replace("@", "")
-    text_var = text_var.replace("c/", "")
-    text_var = text_var.lower()
+    text_varlist = text_varlist.replace("—", "")
+    text_varlist = text_varlist.replace(".", "")
+    text_varlist = text_varlist.replace("!", "")
+    text_varlist = text_varlist.replace("¡", "")
+    text_varlist = text_varlist.replace("?", "")
+    text_varlist = text_varlist.replace("¿", "")
+    text_varlist = text_varlist.replace(",", "")
+    text_varlist = text_varlist.replace(":", "")
+    text_varlist = text_varlist.replace(";", "")
+    text_varlist = text_varlist.replace("(", "")
+    text_varlist = text_varlist.replace(")", "")
+    text_varlist = text_varlist.replace("[", "")
+    text_varlist = text_varlist.replace("]", "")
+    text_varlist = text_varlist.replace("http//", "")
+    text_varlist = text_varlist.replace("http://", "")
+    text_varlist = text_varlist.replace("@", "")
+    text_varlist = text_varlist.replace("c/", "")
+    text_varlist = text_varlist.replace("«", "")
+    text_varlist = text_varlist.replace("»", "")
+    text_varlist = text_varlist.lower()
     
-    preprocess_text(text_var)
+    preprocess_text(text_varlist)
 
-    text = text_var.split()               # Convertimos la variable tipo string text_var con todas las palabras del libro en una lista aplicando split
+    #print ("Variable: " ,text_varlist)
 
-    print("Extracto de la lista(20): ")   # El libro ya en una var tipo string
-    print(Most_Common(text))
+    text = text_varlist.split()   # Convertimos la variable tipo string text_var con todas las palabras del libro en una lista aplicando split
 
+    print("Extracto de la lista Top Ten: ", Most_Common(text))   # El libro ya en una var tipo string
     print("\nTamaño del libro en palabras: ", len(text))
     
     frequency_distribution = nltk.FreqDist(text) 
-    print("La frecuencia de distribución es: " ,frequency_distribution)
+    #print("La frecuencia de distribución es: " ,frequency_distribution)
     
     most_common_element = frequency_distribution.max()
-    print ("Palabra mas común: " ,most_common_element)
-
-    #print ("Palabras: " ,text)
+    
+    #print ("Palabra mas común: " ,most_common_element)
+    #print ("Lista: " ,text)
 
     word_counts = Counter(text) # Contamos la frecuencia de aparicion de las palabras
-    print(word_counts)
+    #print(word_counts)
 
-    lista_unica = set(text)  # Eliminamos las palabras repetidas convirtiendolo en un sret
-    new_text = list(lista_unica) # Volvemos a convertir el set en una lista
-    print("Después de eliminar duplicados: ", len(new_text))
-    print("Texto final: ", new_text)
+    lista_unica = set(text)  # Eliminamos las palabras repetidas con set 
+    new_text    = list(lista_unica) # Volvemos a convertir el set en una lista
 
-    
+    #print("\nDespués de eliminar duplicados: ", len(new_text))
+    #print("Texto final sin palabras duplicadas: ", new_text)
+
+
 
 def Most_Common(text):
     data = Counter(text)
-    return data.most_common(20)
+    return data.most_common(10)
 
 def preprocess_text(text):
     # Tokenise words while ignoring punctuation

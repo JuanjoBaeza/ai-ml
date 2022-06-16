@@ -1,4 +1,4 @@
-import pdftotext
+import fitz
 from collections import Counter
 import nltk
 #nltk.download('wordnet')
@@ -11,72 +11,73 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 def main():
 
-    # Load your PDF
-    with open("datasets/libro.pdf", "rb") as f:
-        pdf_page = pdftotext.PDF(f)     # pdf son las páginas
+    filepath = "datasets/libro.pdf"
 
-    #print(len(pdf_page))     # Numero de paginas
-
-    text_list = []
+    texto_str  = get_text(filepath)         # texto es un string
+    texto_list = preprocess_text(texto_str) # new_texto es una lista
+    frequency_distribution = nltk.FreqDist(texto_list)
+    most_common_element    = frequency_distribution.max()
     
-    for page in pdf_page:     # Iterate over all the pages
-        text_list.append(page.replace("\n", " "))
+    word_counts = Counter(texto_list)       # Frecuencia de aparicion de las palabras
+    clean(texto_str)                        # Limpiamos caracteres no deseados  
 
-    #print(text_list)         # Creamos una lista con todas las frases de las páginas del libro
+    # print(type(texto_str))
+    # print(type(texto_list))
+    # print(texto_str)
+    # print(texto_list)
+    # print("\nPalabra mas común: ", most_common_element)    
+    # print("\nExtracto de la lista Top Ten: ", Most_Common(texto_list))
+    # print("\nTamaño del libro en palabras: ", len(texto_list))
+    # print("\nFrecuencia de aparición: ", word_counts)
 
-    text_varlist = ' '  
+    tf_idf(texto_str, texto_list) # Aplicamos TF-IDF
+
+def tf_idf(texto_str, texto_list):
+
+    vectorizer = TfidfVectorizer()
+    X = vectorizer.fit_transform(texto_list)
+    analyze = vectorizer.build_analyzer()
+
+    print("Documento: ",analyze(texto_str))
+    print("Documento transformado: ", X.toarray())
+    print("Caracteristicas del texto: ", vectorizer.get_feature_names())
+
+
+def clean(texto_str):
+    text_clean = ' '  
     
-    for x in text_list:       # Replace chars not wanted
-        text_varlist += ' ' + x
+    for x in texto_str:       # Replace chars not wanted
+        text_clean += ' ' + x
     
-    text_varlist = text_varlist.replace("—", "")
-    text_varlist = text_varlist.replace(".", "")
-    text_varlist = text_varlist.replace("!", "")
-    text_varlist = text_varlist.replace("¡", "")
-    text_varlist = text_varlist.replace("?", "")
-    text_varlist = text_varlist.replace("¿", "")
-    text_varlist = text_varlist.replace(",", "")
-    text_varlist = text_varlist.replace(":", "")
-    text_varlist = text_varlist.replace(";", "")
-    text_varlist = text_varlist.replace("(", "")
-    text_varlist = text_varlist.replace(")", "")
-    text_varlist = text_varlist.replace("[", "")
-    text_varlist = text_varlist.replace("]", "")
-    text_varlist = text_varlist.replace("http//", "")
-    text_varlist = text_varlist.replace("http://", "")
-    text_varlist = text_varlist.replace("@", "")
-    text_varlist = text_varlist.replace("c/", "")
-    text_varlist = text_varlist.replace("«", "")
-    text_varlist = text_varlist.replace("»", "")
-    text_varlist = text_varlist.lower()
-    
-    preprocess_text(text_varlist)
+    text_clean = text_clean.replace("—", "")
+    text_clean = text_clean.replace(".", "")
+    text_clean = text_clean.replace("!", "")
+    text_clean = text_clean.replace("¡", "")
+    text_clean = text_clean.replace("?", "")
+    text_clean = text_clean.replace("¿", "")
+    text_clean = text_clean.replace(",", "")
+    text_clean = text_clean.replace(":", "")
+    text_clean = text_clean.replace(";", "")
+    text_clean = text_clean.replace("(", "")
+    text_clean = text_clean.replace(")", "")
+    text_clean = text_clean.replace("[", "")
+    text_clean = text_clean.replace("]", "")
+    text_clean = text_clean.replace("http//", "")
+    text_clean = text_clean.replace("http://", "")
+    text_clean = text_clean.replace("@", "")
+    text_clean = text_clean.replace("c/", "")
+    text_clean = text_clean.replace("«", "")
+    text_clean = text_clean.replace("»", "")
+    text_clean = text_clean.lower()
 
-    #print ("Variable: " ,text_varlist)
+    return text_clean
 
-    text = text_varlist.split()   # Convertimos la variable tipo string text_var con todas las palabras del libro en una lista aplicando split
-
-    print("Extracto de la lista Top Ten: ", Most_Common(text))   # El libro ya en una var tipo string
-    print("\nTamaño del libro en palabras: ", len(text))
-    
-    frequency_distribution = nltk.FreqDist(text) 
-    #print("La frecuencia de distribución es: " ,frequency_distribution)
-    
-    most_common_element = frequency_distribution.max()
-    
-    #print ("Palabra mas común: " ,most_common_element)
-    #print ("Lista: " ,text)
-
-    word_counts = Counter(text) # Contamos la frecuencia de aparicion de las palabras
-    #print(word_counts)
-
-    lista_unica = set(text)  # Eliminamos las palabras repetidas con set 
-    new_text    = list(lista_unica) # Volvemos a convertir el set en una lista
-
-    #print("\nDespués de eliminar duplicados: ", len(new_text))
-    #print("Texto final sin palabras duplicadas: ", new_text)
-
-
+def get_text(filepath: str) -> str:
+    with fitz.open(filepath) as doc:
+        text = ""
+        for page in doc:
+            text += page.get_text().strip()
+        return text
 
 def Most_Common(text):
     data = Counter(text)

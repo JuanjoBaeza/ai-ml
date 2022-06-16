@@ -28,7 +28,7 @@ def main():
     # print("\nPalabra mas común: ", most_common_element)    
     # print("\nExtracto de la lista Top Ten: ", Most_Common(texto_list))
     # print("\nTamaño del libro en palabras: ", len(texto_list))
-    # print("\nFrecuencia de aparición: ", word_counts)
+    print("\nFrecuencia de aparición: ", word_counts)
 
     tf_idf(texto_str, texto_list) # Aplicamos TF-IDF
 
@@ -36,12 +36,12 @@ def tf_idf(texto_str, texto_list):
 
     vectorizer = TfidfVectorizer()
     X = vectorizer.fit_transform(texto_list)
-    analyze = vectorizer.build_analyzer()
+    analyze  = vectorizer.build_analyzer()
+    features = vectorizer.get_feature_names()
 
     print("Documento: ",analyze(texto_str))
     print("Documento transformado: ", X.toarray())
-    print("Caracteristicas del texto: ", vectorizer.get_feature_names())
-
+    print("Caracteristicas del texto: ", features)
 
 def clean(texto_str):
     text_clean = ' '  

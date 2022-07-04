@@ -1,9 +1,19 @@
 import fitz
 from collections import Counter
+import numpy as np
+import matplotlib.pyplot as plt
+from tensorflow import keras
+from tensorflow.keras import layers
+import tensorflow as tf
+from tensorflow.keras.layers import Input, Conv2D, Dense, Flatten, Dropout
+from tensorflow.keras.layers import GlobalMaxPooling2D, MaxPooling2D
+from tensorflow.keras.layers import BatchNormalization
+from tensorflow.keras.models import Model
+from tensorflow.keras.models import load_model
 import nltk
-#nltk.download('wordnet')
-#nltk.download('omw-1.4')
-#nltk.download('stopwords')
+# nltk.download('wordnet')
+# nltk.download('omw-1.4')
+# nltk.download('stopwords')
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import RegexpTokenizer
 from nltk.corpus import stopwords
@@ -31,9 +41,23 @@ def main():
     # print("\nTamaño del libro en palabras: ", len(texto_list))
     # print("\nFrecuencia de aparición: ", word_counts)
 
-    tf_idf(texto_str, texto_list) # Aplicamos TF-IDF
+    vectoriza(texto_str, texto_list) # Aplicamos TF-IDF
 
-def tf_idf(texto_str, texto_list): # Modelo Bag of words
+    carga_modelo()
+    
+    
+def carga_modelo():
+
+    inputs = keras.Input(shape=(784,), name='digits')
+    x = layers.Dense(64, activation='relu', name='dense_1')(inputs)
+    x = layers.Dense(64, activation='relu', name='dense_2')(x)
+    outputs = layers.Dense(10, activation='softmax', name='predictions')(x)
+
+    model = keras.Model(inputs=inputs, outputs=outputs, name='datasets/roberta-base-bne/pytorch_model.bin')
+    model.summary()
+
+
+def vectoriza(texto_str, texto_list): # Modelo Bag of words
 
     vectorizer = TfidfVectorizer()
     X = vectorizer.fit_transform(texto_list).toarray()

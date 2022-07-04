@@ -3,13 +3,13 @@ from collections import Counter
 import numpy as np
 import matplotlib.pyplot as plt
 from tensorflow import keras
-from tensorflow.keras import layers
+from keras import layers
 import tensorflow as tf
-from tensorflow.keras.layers import Input, Conv2D, Dense, Flatten, Dropout
-from tensorflow.keras.layers import GlobalMaxPooling2D, MaxPooling2D
-from tensorflow.keras.layers import BatchNormalization
-from tensorflow.keras.models import Model
-from tensorflow.keras.models import load_model
+from keras.layers import Input, Conv2D, Dense, Flatten, Dropout
+from keras.layers import GlobalMaxPooling2D, MaxPooling2D
+from keras.layers import BatchNormalization
+from keras.models import Model
+from keras.models import load_model
 import nltk
 # nltk.download('wordnet')
 # nltk.download('omw-1.4')
